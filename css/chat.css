@@ -1,0 +1,225 @@
+.header-wrapper {
+  position: fixed;
+  z-index: 2;                 /* 데이터의 수직 위치를 정하는 속성 */
+  top: 0px;
+  width: 100%;
+  padding: 5px 0px;
+  background-color: white;
+  box-shadow: 0 18px 36px -18px rgba(0, 0, 0, 0.3),   /* 그림자 생성 */
+    0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+}
+
+.chats-body {
+  min-height: 1000vh;
+  padding: 10px 0px;
+  padding-top: 100px;
+  background-image: url("../images/chatBg.png");
+}
+
+.chats-body .header,
+.chats-body .status-bar {
+  padding: 0px 20px;
+}
+
+.chat__write--container {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chat__icon-left {
+  position: absolute;
+  left: 10px;
+}
+
+.chat__icon-right {
+  position: absolute;
+  right: 10px;
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 18px 36px -18px rgba(0, 0, 0, 0.3),
+      0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    box-shadow: 0 30px 60px -60px rgba(50, 50, 93, 0.25),
+      0 18px 36px -18px rgba(0, 0, 0, 0.3),
+      0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+  100% {
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      0 18px 36px -18px rgba(0, 0, 0, 0.3),
+      0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  }
+}
+
+.chat__write {
+  margin: 0 auto;
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0;
+  padding: 20px 60px;
+  border: none;
+  font-size: 14px;
+  transition: width 0.5s ease-in-out, box-shadow 0.5s ease-in-out,
+    border-radius 0.5s ease-in-out, transform 0.5s ease-in-out;
+  /* 
+    width, box-shadow, border-radius, transform를 
+    chat__write:focus의 표시된 값 만큼의 변화 
+    */
+}
+
+.chat__write:focus {    /* 클래스 명이 chat__write인 아이템에 포커스가 간 경우 실행 */
+  outline: none;
+  width: 80%;
+  transform: translateY(-100px);
+  border-radius: 40px;
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+  animation: float 30s linear infinite forwards;
+}
+
+.chat__icon {
+  font-size: 18px;
+  transition: opacity 0.3s ease-in-out;     /* 보낼 메세지를 클릭한 경우 아이콘들을 투명하게 만듬 */
+}
+
+.chat__write:focus ~ .chat__icon {
+  /* 
+    클래스 명이 chat__write인 아이템에 포커스가 간 경우 
+    클래스 명이 chat__icon인 아이템을 투명하게 만듬
+  */
+  opacity: 0;
+}
+
+.chat__write-icon {
+  margin-right: 10px;
+}
+
+.chat__write-column:nth-child(2) {        /**/
+  width: 80%;
+}
+
+.chat-screen .chat__messages {
+  border-top: 1px solid #f7f7f7;
+  display: flex;
+  flex-direction: column;           /* 아이템을 세로로 지정 */
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  padding-top: 30px;
+}
+
+.chat__messages .chat__timestamp {
+  background-color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  font-weight: 700;                /* 폰트의 가중치 설정 */
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;        /* 데이터의 정렬을 위쪽으로 설정 */
+  margin-bottom: 20px;
+}
+
+.incoming-message {
+  align-self: flex-start;         /* 데이터의 정렬을 시작점으로 설정 */
+}
+
+.sent-message {
+  align-self: flex-end;           /* 데이터의 정렬을 끝점으로 설정 */
+}
+
+@keyframes spin {                 /* 이미지 회전 */
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotateY(0.5turn);
+  }
+}
+
+.incoming-message img {
+  width: 30px;
+  border-radius: 15px;
+  margin-right: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  animation: spin 1s linear infinite;
+   /* 
+    linear : 애니메이션 효과가 처음부터 끝까지 일정한 속도 유지 
+    infinite : 애니메이션 효과 무한 반복
+   */                    
+}
+
+.message .message__bubble {
+  background-color: white;
+  display: block;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px,
+    rgba(0, 0, 0, 0.024) 0px -6px 16px -6px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.incoming-message .message__author {
+  margin-top: 10px;
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.incoming-message .message__bubble {
+  border-bottom-left-radius: 0px;         /* 말풍선 모양 왼쪽 아래는 각 생성 */
+  background-image: linear-gradient(to right, #7b4397, #dc2430);    /* 선형의 그라데이션 백그라운드를 생성 */
+}
+
+.sent-message .message__bubble {
+  border-bottom-right-radius: 0px;        /* 말풍선 모양 오른쪽 아래는 각 생성 */
+  background-image: linear-gradient(to left, #00c6ff, #0072ff);
+}
+
+@keyframes incomingAnim {                 /* 받은 메세지가 왼쪽에서 이동하면서 보임 */
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.incoming-message {
+  animation: incomingAnim 0.5s ease-out forwards;
+}
+
+@keyframes sentAnimation {                /* 보낸 메세지가 오른쪽에서 이동하면서 보임 */
+  from {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sent-message {
+  animation: sentAnimation 0.5s ease-out forwards;
+}

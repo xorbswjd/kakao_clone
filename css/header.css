@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;            /* 교차축 중앙 정렬(세로 가운데 정렬) */
+    margin-bottom: 30px;
+  }
+  
+  .header .header-title {
+    font-size: 24px;
+    font-weight: 600;               /* 글자 굵기 */
+  }
+  
+  .header .header-icon {
+    font-size: 20px;
+    margin-left: 20px;
+    cursor: pointer;                /* 커서가 아이콘 위에 존재할 때 커서 변환 */
+  }
+  
+  .header .header-column {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header .header-back-btn {
+    font-size: 22px;
+    margin-right: 20px;
+  }

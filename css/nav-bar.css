@@ -1,0 +1,52 @@
+.nav {
+    position: fixed;                /* 위치 고정 */
+    width: 100%;
+    background-color: #fcfcfc;
+    padding: 20px 50px;
+    left: 0px;
+    bottom: 0px;
+    border-top: 1px solid #f7f7f7;
+}
+
+.nav .nav__list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav i {
+    font-size: 20px;
+}
+
+.nav .nav__list-link {
+    position: relative;
+}
+
+.nav .nav__badge {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    font-size: 10px;
+    color: white;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+@keyframes showNavBar {                             /* 자바스크립트를 이용하지 않아도 간단한 애니메이션 가능 */
+    from {
+        transform: translateY(80px);                /* 이동효과를 줌(아래에서 이동) */
+    }
+    to {
+        transform: none;
+    }
+}
+
+.nav {
+    transform: translateY(80px);
+    animation: showNavBar 0.5s ease-out forwards;
+    animation-delay: 0.5s;                          /* 애니메이션 시작 시간 설정 */
+}
